@@ -1,4 +1,8 @@
-
+function game() {
+    let compWins = 0;
+    let playWins = 0;
+    let ties = 0;
+    for (let i = 0; i < 5; i++) {
 //initialize variables for computer selection and player selection
 let playerSelection;
 let computerSelection;
@@ -81,12 +85,15 @@ if (result === "invalid") {
     return " Your selection is not a viable fighter. Please try again. There are... there are only three options I don't know how you messed up this badly.";
 }
 else if (result === "player") {
+    playWins = ++playWins;
     return `You Win! ${capFirst(playerChoice)} beats ${capFirst(computerChoice)}!`;
 }
 else if (result === "comp") {
+    compWins = ++compWins;
     return `You chose... poorly. ${capFirst(computerChoice)} beats ${capFirst(playerChoice)}.`;
 }
 else if (result === "tie") {
+    ties = ++ties;
     return `You both selected ${capFirst(playerChoice)}. There is no victory here, nor defeat, just a gray void of empty meaninglessness.`;
 }
 else if (result === "explode") {
@@ -97,7 +104,11 @@ else {
 }
 };
 console.log(playRound(playerSelection, computerSelection));
-//log winner
-//have contest run five times
-//keep track of each winner
+console.log(playWins + " " + compWins + " " + ties);
+
+    }
 //output final results
+return `Your victories: ${playWins}
+Computer victories: ${compWins}
+Boring ties: ${ties}`;
+}
